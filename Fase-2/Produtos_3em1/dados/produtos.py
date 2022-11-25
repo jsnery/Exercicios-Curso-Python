@@ -6,5 +6,5 @@ Produtos = [
     {'nome': 'Air Fryer', 'preco': 462.40},
 ]
 
-def Ordenar(x, y):
-    return sorted(x, key=lambda n: n[y])
+def Ordenar(x, y, r):
+    return sorted(x, key=lambda n: n[y], reverse=r)
