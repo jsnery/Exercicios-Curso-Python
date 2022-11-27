@@ -14,9 +14,7 @@ def FactorFunc(func):
 
 @FactorFunc
 def zipper(cap, est, z=0):
-    n = []
-    for i in range(z):
-        n.append((cap[i], est[i]))
+    n = [(cap[i], est[i]) for i in range(z)]
     return n
 
 print(zipper(capitais, estados))
