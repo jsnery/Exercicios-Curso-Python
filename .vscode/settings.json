@@ -4,9 +4,6 @@
     "synthwave84.disableGlow": false,
     "synthwave84.brightness": 1,
     "workbench.colorTheme": "OM Theme (Night Owl Italic)",
-    "workbench.preferredDarkColorTheme": "SynthWave '84",
-    "workbench.preferredHighContrastColorTheme": "SynthWave '84",
-    "workbench.preferredLightColorTheme": "SynthWave '84",
     "python.globalModuleInstallation": false,
     "terminal.explorerKind": "external",
     "terminal.integrated.fontFamily": "Fira Code Retina",
@@ -14,7 +11,7 @@
     "editor.fontLigatures": true,
     "workbench.iconTheme": "vs-seti",
     "code-runner.executorMap": {
-        "python": "clear; python3 -u",
+        "python": "clear; python -u",
     },
     // "code-runner.saveFileBeforeRun": true,
     "code-runner.runInTerminal": true,

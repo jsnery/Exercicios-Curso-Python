@@ -1,9 +1,12 @@
-from os import system
+from os import system, path
 from sys import exit
 from time import sleep
+import json
+
+DIR = path.dirname(__file__)
 
 def clear():
-    system('clear')
+    system('cls')
     
 def remover():
     if tarefas == []:
@@ -37,17 +40,31 @@ def listar():
 def sair():
     return exit()
 
+def exportar():
+    LISTANOME = path.join(DIR, 'tarefas.txt')
+    JSONNOME = path.join(DIR, 'tarefas.json')
+
+    with open(JSONNOME, 'w') as file:
+        json.dump(tarefas, file, indent=2)
+
+    with open(LISTANOME, 'w') as file:
+        file.write('Lista de Tarefas\n\n')
+        for i, tarefa in enumerate(tarefas, 1):
+            file.write(f'{i}ª - {tarefa}\n') 
+
+
 apagados = []
 tarefas = []
 opcao = None
 while True:
-    print('Comandos: Listar, Remover, Refazer ou Sair\n')
+    print('Comandos: Listar, Remover, Refazer, Exportar ou Sair\n')
     opcao = input('Digite uma tarefa ou comando: ').lower()
     comandos = {
         'listar': lambda: listar(),
         'remover': lambda: remover(),
         'refazer': lambda: refazer(),
-        'sair': lambda: sair()
+        'sair': lambda: sair(),
+        'exportar': lambda: exportar()
     }
     
     clear()
