@@ -22,8 +22,10 @@ pessoas = [vars(p1), vars(p2), vars(p3)]
 DIR = path.dirname(__file__)
 JSONNAME = path.join(DIR, 'pessoas.json')
 
-if __name__ == '__main__': # assim ele só será executado quando esse for o principal Kkkkkk
-    def salvar():
-        with open(JSONNAME, 'w') as file:
-            json.dump(pessoas, file, indent=2)
+def salvar():
+    with open(JSONNAME, 'w') as file:
+        json.dump(pessoas, file, indent=2)
 
+
+if __name__ == '__main__': # assim ele só será executado quando esse for o principal Kkkkkk
+    salvar()
