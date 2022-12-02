@@ -3,7 +3,14 @@ from sys import exit
 from time import sleep
 import json
 
+apagados = []
+tarefas = []
 DIR = path.dirname(__file__)
+JSONNOME = path.join(DIR, 'tarefas.json')
+
+if path.isfile(JSONNOME):
+    with open(JSONNOME, 'r') as file:
+        tarefas = json.load(file)
 
 def clear():
     system('cls')
@@ -41,6 +48,7 @@ def sair():
     return exit()
 
 def exportar():
+    
     LISTANOME = path.join(DIR, 'tarefas.txt')
     JSONNOME = path.join(DIR, 'tarefas.json')
 
@@ -53,8 +61,6 @@ def exportar():
             file.write(f'{i}ª - {tarefa}\n') 
 
 
-apagados = []
-tarefas = []
 opcao = None
 while True:
     print('Comandos: Listar, Remover, Refazer, Exportar ou Sair\n')
