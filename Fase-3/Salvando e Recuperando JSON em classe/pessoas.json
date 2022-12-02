@@ -1,0 +1,23 @@
+[
+  {
+    "nome": "Richard",
+    "sobrenome": "Neri",
+    "idade": 22,
+    "peso": 78,
+    "altura": 1.76
+  },
+  {
+    "nome": "Sara",
+    "sobrenome": "Gomes",
+    "idade": 22,
+    "peso": 56,
+    "altura": 1.64
+  },
+  {
+    "nome": "Joelma",
+    "sobrenome": "Santos",
+    "idade": 43,
+    "peso": 60,
+    "altura": 1.6
+  }
+]

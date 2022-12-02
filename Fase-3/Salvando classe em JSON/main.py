@@ -29,7 +29,7 @@ while True:
     break
 
 nomePessoa = people[index].nome
-dictPessoa = people[index].__dict__
+dictPessoa = vars(people[index])
 
 DIR = path.dirname(__file__)
 JSONNAME = path.join(DIR, f'{nomePessoa}.json')
