@@ -21,7 +21,7 @@ class Banco:
         
         for c in self.clientes:
             if c == cliente:
-                return cliente.conta.Sacar(value)
+                return cliente.conta.sacar(value)
 
     def checking_depositar(self, cliente: Cliente, value: int):
         if cliente.conta not in self.contas:
@@ -29,12 +29,16 @@ class Banco:
         
         for c in self.clientes:
             if c == cliente:
-                return cliente.conta.Depositar(value)
+                return cliente.conta.depositar(value)
+            
+    def checking_saldo(self, cliente: Cliente):
+        return f'O saldo é: {cliente.conta._saldo}'
                 
 
 banco1 = Banco(500)
 
 conta1 = ContaCorrente(agencia=500, numero=264849)
+conta1.set_limite(500)
 conta2 = ContaPoupanca(agencia=900, numero=4748)
 
 cliente1 = Cliente('Richard', 22, 8323217530, conta1)
@@ -59,14 +63,22 @@ def depositar(banco: Banco, cliente: Cliente, value: int):
     else:
         print('Erro no deposito!')
     
+def saldo(banco: Banco, cliente: Cliente):
+    print(banco.checking_saldo(cliente))
+
+
+
 
 if __name__ == '__main__':
     check_add_cliente(banco1, cliente1)
     check_add_cliente(banco1, cliente2)
     print()
-    sacar(banco1, cliente1, 20)
+    depositar(banco1, cliente1, 20)
+    depositar(banco1, cliente2, 202)
+    print()
+    sacar(banco1, cliente1, 260)
     sacar(banco1, cliente2, 20)
     print()
-    depositar(banco1, cliente1, 20)
-    depositar(banco1, cliente2, 20)
+    saldo(banco1, cliente1)
+    saldo(banco1, cliente2)
 
