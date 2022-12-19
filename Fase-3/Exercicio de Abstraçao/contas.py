@@ -26,9 +26,8 @@ class ContaCorrente(Conta):
         else:
             self._limite = 0
 
-
     def sacar(self, value):
-        if (self._saldo - value) <= self._limite:
+        if (self._saldo - value) < self._limite:
             return False
         
         self._saldo -= value
