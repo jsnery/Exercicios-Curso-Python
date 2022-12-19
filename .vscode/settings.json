@@ -1,6 +1,6 @@
 {
     "window.menuBarVisibility": "compact",
-    "python.analysis.typeCheckingMode": "off",
+    "python.analysis.typeCheckingMode": "basic",
     "synthwave84.disableGlow": false,
     "synthwave84.brightness": 1,
     "workbench.colorTheme": "OM Theme (Night Owl Italic)",

@@ -18,7 +18,7 @@ class Banco:
     def checking_sacar(self, cliente: Cliente, value: int):
         if cliente.conta not in self.contas:
             return False
-        
+
         for c in self.clientes:
             if c == cliente:
                 return cliente.conta.sacar(value)
@@ -26,14 +26,14 @@ class Banco:
     def checking_depositar(self, cliente: Cliente, value: int):
         if cliente.conta not in self.contas:
             return False
-        
+
         for c in self.clientes:
             if c == cliente:
                 return cliente.conta.depositar(value)
-            
+
     def checking_saldo(self, cliente: Cliente):
         return f'O saldo é: {cliente.conta._saldo:.2f}'
-                
+
 
 banco1 = Banco(500)
 
@@ -41,8 +41,8 @@ conta1 = ContaCorrente(agencia=500, numero=264849)
 conta1.set_limite(500)
 conta2 = ContaPoupanca(agencia=900, numero=4748)
 
-cliente1 = Cliente('Richard', 22, 8323217530, conta1)
-cliente2 = Cliente('Sara', 22, 8825642504, conta2)
+cliente1 = Cliente('Richard', 22, conta1)
+cliente2 = Cliente('Sara', 22, conta2)
 
 
 def check_add_cliente(banco: Banco, cliente: Cliente):
@@ -51,22 +51,23 @@ def check_add_cliente(banco: Banco, cliente: Cliente):
     else:
         print('Cliente não pertence a esse Banco')
 
+
 def sacar(banco: Banco, cliente: Cliente, value: int):
     if banco.checking_sacar(cliente=cliente, value=value):
         print('Saque realizado com sucesso')
     else:
         print('Erro no saque!')
 
+
 def depositar(banco: Banco, cliente: Cliente, value: int):
     if banco.checking_depositar(cliente=cliente, value=value):
         print('Deposito realizado com sucesso')
     else:
         print('Erro no deposito!')
-    
+
+
 def saldo(banco: Banco, cliente: Cliente):
     print(banco.checking_saldo(cliente))
-
-
 
 
 if __name__ == '__main__':
@@ -81,4 +82,3 @@ if __name__ == '__main__':
     print()
     saldo(banco1, cliente1)
     saldo(banco1, cliente2)
-
