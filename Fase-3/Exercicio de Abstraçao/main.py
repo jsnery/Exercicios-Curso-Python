@@ -32,7 +32,7 @@ class Banco:
                 return cliente.conta.depositar(value)
             
     def checking_saldo(self, cliente: Cliente):
-        return f'O saldo é: {cliente.conta._saldo}'
+        return f'O saldo é: {cliente.conta._saldo:.2f}'
                 
 
 banco1 = Banco(500)
