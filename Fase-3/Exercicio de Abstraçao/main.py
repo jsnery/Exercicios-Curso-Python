@@ -60,12 +60,13 @@ def depositar(banco: Banco, cliente: Cliente, value: int):
         print('Erro no deposito!')
     
 
-check_add_cliente(banco1, cliente1)
-check_add_cliente(banco1, cliente2)
-print()
-sacar(banco1, cliente1, 20)
-sacar(banco1, cliente2, 20)
-print()
-depositar(banco1, cliente1, 20)
-depositar(banco1, cliente2, 20)
+if __name__ == '__main__':
+    check_add_cliente(banco1, cliente1)
+    check_add_cliente(banco1, cliente2)
+    print()
+    sacar(banco1, cliente1, 20)
+    sacar(banco1, cliente2, 20)
+    print()
+    depositar(banco1, cliente1, 20)
+    depositar(banco1, cliente2, 20)
 
