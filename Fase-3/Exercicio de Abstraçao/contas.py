@@ -7,7 +7,7 @@ class Conta(ABC):
         self.numero = numero
         self._saldo = 0
 
-    def Depositar(self, value) -> bool:
+    def depositar(self, value) -> bool:
         if value <= 0:
             return False
         
@@ -15,22 +15,34 @@ class Conta(ABC):
         return True
 
     @abstractmethod
-    def Sacar(self) -> bool:...
+    def sacar(self) -> bool:...
 
 
 class ContaCorrente(Conta):
+    def __init__(self, numero, agencia, limite=0):
+        super().__init__(numero, agencia)
+        if limite > 0:
+            self._limite = -limite
+        else:
+            self._limite = 0
 
-    def Sacar(self, value):
-        if (self._saldo - value) <= -200:
+
+    def sacar(self, value):
+        if (self._saldo - value) <= self._limite:
             return False
         
         self._saldo -= value
         return True
     
+    def set_limite(self, value):
+        if value > 0:
+            self._limite = -value
+        
+    
     
 class ContaPoupanca(Conta):
 
-    def Sacar(self, value):
+    def sacar(self, value):
         if value > self._saldo or value <= 0:
             return False
         
