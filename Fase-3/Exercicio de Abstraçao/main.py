@@ -8,30 +8,43 @@ class Banco:
         self.clientes = []
         self.contas = []
 
-    def vincular_cliente(self, cliente: Cliente):
-        if cliente.conta.agencia == self.agencia:
+    def checar_conta(self, cliente: Cliente) -> bool:
+        if cliente.conta is None:
+            return True
+        return False
+
+    def vincular_cliente(self, cliente: Cliente) -> bool:
+        if self.checar_conta(cliente):
+            return False
+        elif cliente.conta.agencia == self.agencia:
             self.clientes.append(cliente)
             self.contas.append(cliente.conta)
             return True
         return False
 
-    def checking_sacar(self, cliente: Cliente, value: int):
-        if cliente.conta not in self.contas:
+    def saque(self, cliente: Cliente, value: int):
+        if self.checar_conta(cliente):
+            return False
+        elif cliente.conta not in self.contas:
             return False
 
         for c in self.clientes:
             if c == cliente:
                 return cliente.conta.sacar(value)
 
-    def checking_depositar(self, cliente: Cliente, value: int):
-        if cliente.conta not in self.contas:
+    def deposito(self, cliente: Cliente, value: int):
+        if self.checar_conta(cliente):
+            return False
+        elif cliente.conta not in self.contas:
             return False
 
         for c in self.clientes:
             if c == cliente:
                 return cliente.conta.depositar(value)
 
-    def checking_saldo(self, cliente: Cliente):
+    def saldo_cliente(self, cliente: Cliente) -> str:
+        if self.checar_conta(cliente):
+            return 'O Cliente não possui conta cadastrada.'
         return f'O saldo é: {cliente.conta._saldo:.2f}'
 
 
@@ -41,8 +54,10 @@ conta1 = ContaCorrente(agencia=500, numero=264849)
 conta1.set_limite(500)
 conta2 = ContaPoupanca(agencia=900, numero=4748)
 
-cliente1 = Cliente('Richard', 22, conta1)
-cliente2 = Cliente('Sara', 22, conta2)
+cliente1 = Cliente('Richard', 22)
+cliente1.conta = conta1
+cliente2 = Cliente('Sara', 22)
+cliente2.conta = conta2
 
 
 def check_add_cliente(banco: Banco, cliente: Cliente):
@@ -53,21 +68,21 @@ def check_add_cliente(banco: Banco, cliente: Cliente):
 
 
 def sacar(banco: Banco, cliente: Cliente, value: int):
-    if banco.checking_sacar(cliente=cliente, value=value):
+    if banco.saque(cliente=cliente, value=value):
         print('Saque realizado com sucesso')
     else:
         print('Erro no saque!')
 
 
 def depositar(banco: Banco, cliente: Cliente, value: int):
-    if banco.checking_depositar(cliente=cliente, value=value):
+    if banco.deposito(cliente=cliente, value=value):
         print('Deposito realizado com sucesso')
     else:
         print('Erro no deposito!')
 
 
 def saldo(banco: Banco, cliente: Cliente):
-    print(banco.checking_saldo(cliente))
+    print(banco.saldo_cliente(cliente))
 
 
 if __name__ == '__main__':

@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 
 
 class Conta(ABC):
-    def __init__(self, numero: int, agencia: int):
+    def __init__(self, numero: int, agencia: int) -> None:
         self.agencia = agencia
         self.numero = numero
         self._saldo = 0.0
@@ -19,7 +19,7 @@ class Conta(ABC):
 
 
 class ContaCorrente(Conta):
-    def __init__(self, numero: int, agencia: int, limite: float = 0):
+    def __init__(self, numero: int, agencia: int, limite: float = 0) -> None:
         super().__init__(numero, agencia)
         if limite > 0:
             self._limite = -limite

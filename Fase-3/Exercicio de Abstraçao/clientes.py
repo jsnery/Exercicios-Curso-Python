@@ -1,29 +1,34 @@
-from abc import ABC, abstractmethod
+class Pessoa:
+    def __init__(self, nome: str, idade: int) -> None:
+        self.nome = nome
+        self.idade = idade
 
+    @property
+    def nome(self) -> str:
+        return self._nome
 
-class Pessoa(ABC):
-    def __init__(self, nome, idade):
+    @nome.setter
+    def nome(self, nome: str):
         self._nome = nome
+
+    @property
+    def idade(self) -> int:
+        return self._idade
+
+    @idade.setter
+    def idade(self, idade: int):
         self._idade = idade
-
-    @property
-    @abstractmethod
-    def nome(self): ...
-
-    @property
-    @abstractmethod
-    def idade(self): ...
 
 
 class Cliente(Pessoa):
-    def __init__(self, nome: str, idade: int, conta):
+    def __init__(self, nome: str, idade: int) -> None:
         super().__init__(nome, idade)
-        self.conta = conta
+        self.conta = None
 
     @property
-    def nome(self):
-        return self._nome
+    def conta(self):
+        return self._conta
 
-    @property
-    def idade(self):
-        return self._idade
+    @conta.setter
+    def conta(self, conta):
+        self._conta = conta
