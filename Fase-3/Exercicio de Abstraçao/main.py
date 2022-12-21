@@ -1,12 +1,19 @@
-from contas import ContaPoupanca, ContaCorrente
+from contas import ContaPoupanca, ContaCorrente, Conta
 from clientes import Cliente
 
 
 class Banco:
-    def __init__(self, nome):
+    def __init__(
+        self,
+        nome: str,
+        agencias: list[int] | None = None,
+        conta: list[Conta] | None = None,
+        clientes: list[Cliente] | None = None
+    ):
         self.nome = nome
-        self.agencias = []
-        self.clientes = []
+        self.agencias = agencias or []
+        self.contas = conta or []
+        self.clientes = clientes or []
 
     @property
     def agencias(self) -> list:
@@ -15,6 +22,14 @@ class Banco:
     @agencias.setter
     def agencias(self, agencias: list):
         self._agencia = agencias
+
+    @property
+    def contas(self) -> list[Conta] | None:
+        return self._contas
+
+    @contas.setter
+    def contas(self, conta):
+        self._contas = conta
 
     @property
     def cliente(self) -> list:
@@ -33,10 +48,6 @@ class Banco:
 
         self._cliente = clientes_validos
         self._contas = contas_validas
-
-    @property
-    def contas(self):
-        return self._contas
 
 
 x = Banco('Bradesco')
