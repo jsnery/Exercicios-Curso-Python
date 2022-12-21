@@ -21,7 +21,7 @@ class Banco:
         return self._cliente
 
     @cliente.setter
-    def cliente(self, clientes: list[Cliente]):
+    def cliente(self, clientes):
         clientes_validos = []
         contas_validas = []
         for c in clientes:
@@ -40,7 +40,17 @@ class Banco:
 
 
 x = Banco('Bradesco')
-x.agencias = [1, 2, 4]
-x.agencias.append(1)
+x.agencias = [500]
+x.agencias.append(240)
 
-print(x.agencias)
+cliente1 = Cliente('Richard', 22)
+cliente2 = Cliente('Sara', 22)
+conta1 = ContaCorrente(26873483, 500, 1000)
+conta2 = ContaPoupanca(52515, 240)
+cliente1.conta = conta1
+cliente2.conta = conta2
+
+x.cliente = [cliente1, cliente2]
+
+print(x.cliente)
+print(x.contas)
