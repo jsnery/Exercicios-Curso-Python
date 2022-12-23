@@ -76,7 +76,7 @@ x.agencias = [500]
 x.agencias.append(240)
 x.clientes = [cliente1, cliente2]
 x.contas = [conta1, conta2]
- 
+
 print(*x.clientes, sep='\n')
 print()
 print(*x.contas, sep='\n')
